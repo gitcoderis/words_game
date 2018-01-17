@@ -1,0 +1,31 @@
+img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 100%;
+    padding: 10px;
+}
+span {
+    margin: 0 10px 0 0;
+}
+.letter {
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+.add-letters {
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+}
+.top-nav {
+    padding: 20px;
+}
+.crossword-cont {
+    padding-top: 60px;
+}
