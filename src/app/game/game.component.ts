@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RandomizeWordsService } from '../randomize-words.service';
+
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _random: RandomizeWordsService) { }
 
   ngOnInit() {
+    this._random.arVeikia();
   }
 
 }

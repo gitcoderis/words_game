@@ -9,6 +9,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 
+import { RandomizeWordsService } from './randomize-words.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { GameComponent } from './game/game.component';
     MatCardModule,
     FlexLayoutModule,
   ],
-  providers: [],
+  providers: [RandomizeWordsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
