@@ -1,3 +1,68 @@
+
 .intro {
-  margin-bottom: 60px;
+  background: url('https://www.mrperswall.com/sites/default/files/styles/gallery_large/public/wallpapers/wall/P130401-W.jpg?itok=bvmPCakU') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 600px;
+  margin: 0;
+  font-family: 'Noto Serif', serif;
+
+  .logo {
+    height: 200px;
+    width: 340px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  h1 {
+    text-align: center;
+    text-shadow: 1px 1px rgba(0, 0, 0, .1);
+    color: #000;
+    margin-top: 57px;
+    font-weight: 700;
+    font-size: 100px;
+  }
+
+  .control {
+    width: 100%;
+    position: absolute;
+    margin: auto;
+    bottom: 75px;
+    left: 0;
+    right: 0;
+
+    .first, .second {
+      height: 70px;
+      line-height: 70px;
+
+      a {
+        width: 250px;
+        font-family: 'Noto Serif', serif;
+        font-size: 20px;
+        height: 50px;
+        line-height: 50px;
+        background-color: #000;
+        color: #fff;
+      }
+      .item1 {
+        margin-left: 50px;
+      }
+      .item2 {
+        margin-right: 60px !important;
+      }
+    }
+  }
+  button {
+    font-family: 'Noto Serif', serif;
+    width: 170px;
+    height: 40px;
+    font-size: 17px;
+    background-color: #000;
+    color: #fff;
+  }
 }
+
+

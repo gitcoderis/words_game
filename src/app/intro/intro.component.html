@@ -1,38 +1,44 @@
 <div class="intro">
-    <mat-card fxLayout="row">
-    <div style="width:100%; text-align: center;"
+    <div fxLayout="row" style="width:100%; text-align: center;"
          fxLayout
          fxLayout.xs="column"
          fxLayoutAlign="center"
          fxLayoutGap="10px"
          fxLayoutGap.xs="0">
-      <div class="item" fxFlex>Logo</div>
+      <h1 class="logo" fxFlex>Logo</h1>
     </div>
-  </mat-card>
-  <mat-card fxLayout="row">
-    <div style="width:100%; text-align: center;"
+  <div class="control">
+    <div class="first" fxLayout="row" style="width:100%; text-align: center;"
          fxLayout
          fxLayout.xs="column"
          fxLayoutAlign="center"
          fxLayoutGap="10px"
          fxLayoutGap.xs="0">
-      <div class="item item-1" fxFlex="15%">Topas</div>
-      <div class="item item-2" fxFlex="15%" fxFlexOrder="3">Kiti žaidimai</div>
-      <div class="item item-3" fxFlex>
-        <a routerLink="/game">Pradėti naują žaidimą</a>
+      <div class="item1" fxFlex="15%">
+        <button mat-raised-button>Žaidėjų topas</button>
+      </div>
+      <div class="item2" fxFlex="15%" fxFlexOrder="3">
+        <button mat-raised-button>Dienos žaidimas</button>
+      </div>
+      <div fxFlex>
+        <a mat-raised-button routerLink="/game">Pradėti naują žaidimą</a>
       </div>
     </div>
-  </mat-card>
-  <mat-card fxLayout="row">
-    <div style="width:100%; text-align: center;"
+    <div class="second" fxLayout="row" style="width:100%; text-align: center;"
          fxLayout
          fxLayout.xs="column"
          fxLayoutAlign="center"
          fxLayoutGap="10px"
          fxLayoutGap.xs="0">
-      <div class="item item-1" fxFlex="15%">Nustatymai</div>
-      <div class="item item-2" fxFlex="15%" fxFlexOrder="3">Daily bonus</div>
-      <div class="item item-3" fxFlex>Pasirinkti kalbą</div>
+      <div class="item1" fxFlex="15%">
+        <button mat-raised-button>Nustatymai</button>
+      </div>
+      <div class="item2" fxFlex="15%" fxFlexOrder="3">
+        <button mat-raised-button>Daily bonus</button>
+      </div>
+      <div fxFlex>
+        <a mat-raised-button routerLink=".">Pasirinkti kalbą</a>
+      </div>
     </div>
-  </mat-card>
+  </div>
 </div>
