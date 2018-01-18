@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// Elena: added routing
+import { RouterModule } from '@angular/router';
+import { routing } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatCardModule } from '@angular/material';
@@ -21,6 +24,8 @@ import { RandomizeWordsService } from './randomize-words.service';
   ],
   imports: [
     BrowserModule,
+    routing,
+    RouterModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
