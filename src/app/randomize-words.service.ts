@@ -6,7 +6,7 @@ export class RandomizeWordsService {
   constructor() { }
 
   arVeikia() {
-    
+
       console.log('RandomizeWordsService veikia');
   }
 }

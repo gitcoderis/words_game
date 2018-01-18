@@ -2,19 +2,30 @@ img {
     width: 100%;
     max-width: 400px;
     border-radius: 100%;
-    padding: 10px;
+    padding: 20px 0;
 }
 span {
     margin: 0 10px 0 0;
 }
+.top-container{
+    background-color: #fff;
+}
+.container {
+    padding-top: 60px;
+}
 .letter {
     display: inline-block;
-    border: 1px solid #000;
-    border-radius: 5px;
+    background-color: #c1ff7a;
+    border-radius: 100%;
     margin: 10px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #3f545e;
+    box-shadow: inset 4px 4px 20px 0px;
+}
+.letter:hover {
+    cursor: pointer;
 }
 .add-letters {
     border: 1px solid #000;
@@ -28,4 +39,26 @@ span {
 }
 .crossword-cont {
     padding-top: 60px;
+}
+.help-btn {
+    margin: 0 auto;
+    line-height: 40px;
+    a {
+         color: #000;
+    text-decoration: none;
+    }
+}
+.pause {
+    color: #000;
+    text-decoration: none;
+}
+// bandymas atvaizduoti lentele
+table {
+    margin: 0 auto;
+}
+tr {
+    height: 20px;
+}
+td {
+    width: 20px;
 }
