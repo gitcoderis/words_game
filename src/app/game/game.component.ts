@@ -13,7 +13,7 @@ export class GameComponent implements OnInit {
   constructor(private _random: RandomizeWordsService) { }
 
   ngOnInit() {
-    this._random.arVeikia();
+    this._random.words();
   }
 
 }
