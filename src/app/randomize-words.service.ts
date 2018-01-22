@@ -11,6 +11,11 @@ export class RandomizeWordsService {
 
   constructor() { }
 
+  getOneRandomWord() {
+    let oneRandomWord = this.word[Math.floor(Math.random() * this.word.length) + 1];
+    return oneRandomWord;
+
+  }
 
   words() {
 

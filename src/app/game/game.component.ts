@@ -9,14 +9,16 @@ import { RandomizeWordsService } from '../randomize-words.service';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-
+  randomWords: any; // laiko random zodzio reiksme
   constructor(
     private _random: RandomizeWordsService,
     private elRef: ElementRef) { }
 
   ngOnInit() {
 
-    this._random.words();
+    // Marius: gauna viena random zodi:
+    this.randomWords = this._random.getOneRandomWord().word;
+    console.log(this.randomWords);
 
     // Elena: pradedu rasyti funkcija kryziazodziui atvaizduoti
     const container = this.elRef.nativeElement.querySelector('#crossword-grid'); // randa div, kuriame kursiu langelius
