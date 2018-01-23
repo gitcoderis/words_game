@@ -14,13 +14,15 @@ import { GameComponent } from './game/game.component';
 import { IntroComponent } from './intro/intro.component';
 
 import { RandomizeWordsService } from './randomize-words.service';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
-    IntroComponent
+    IntroComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

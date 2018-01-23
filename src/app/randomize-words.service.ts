@@ -7,6 +7,7 @@ import * as data from '../assets/js/words.json';
 export class RandomizeWordsService {
 
  word:any = (<any>data);
+ randWord: any;
  randomWords: any = [];
 
   constructor() { }
@@ -17,33 +18,47 @@ export class RandomizeWordsService {
 
   }
 
-  words() {
+  //gauna random zodi ir tikrina ji
+  getRandomWords() {
+    this.randWord = this.word[Math.floor(Math.random() * this.word.length) + 1];
+    this.checkWords(this.randWord);
+  }
 
-    for(let i = 0; i < 4; i++) {
-      let getRandomWord = this.word[Math.floor(Math.random() * this.word.length) + 1];
-
-      if(this.randomWords.length === 0) {
-        this.randomWords.push(getRandomWord);
-
-      } else {
-        for(let j = 0; j < this.randomWords.length; j++){
-          if(getRandomWord === this.randomWords[j]) {
-            console.log(this.randomWords[j]);
-
-          } else {
-            this.randomWords.push(getRandomWord);
-            // console.log('hello');
-          }
-        }
-
-      }
-
+  //tikrina, ar random zodis jau yra masyve. Jei yra - ipushina, jei ne - kviecia getRandomWords funkcija is naujo.
+  checkWords(word: any) {
+    if(this.randomWords.length === 0) {
+      this.randomWords.push(word);
+      this.getRandomWords();
+      return false;
     }
+    for(let i = 0; i < 4; i++) {
+      if(word === this.randomWords[i]){
+        this.getRandomWords();
+        return false;
+      } else {
+        this.randomWords.push(word);
+        i = 4;
+        if(this.randomWords.length === 4) {
+            this.displayWords();
+            return false;
+        } else {
+          this.getRandomWords();
+          return false;
+        }
+      }
+    }
+
+
+  }
+
+  getWords() {
+
+
+    this.getRandomWords();
+  
+  }
+
+  displayWords() {
     console.log(this.randomWords);
-    // console.log(this.randomWords.length);
-    // console.log(this.getRandomWord);
-    // console.log(this.randomWords);
-
-
   }
 }
