@@ -31,7 +31,7 @@ export class GameComponent implements OnInit {
         letter.style.width = '50px';
         letter.style.height = '50px';
         container.appendChild(letter); // langelius ideda i pagrindini div'a
-    }
+      }
     }
     // Elena: pradedu rasyti funkcija raidziu langeliams atvaizduoti
     const contLetter = this.elRef.nativeElement.querySelector('#randomLetters');
@@ -64,11 +64,39 @@ export class GameComponent implements OnInit {
       return word_split.join('');
     }
     // funkcija raidems irasyti i tuscius langelius
-    function selectLetter(id) {
-      const selected_letter = document.getElementById(id).innerHTML;
-      const empty_letter = document.getElementById('0');
-      empty_letter.innerHTML = selected_letter;
+    // function selectLetter(id) {
+    //   const selected_letter = document.getElementById(id).innerHTML;
+    //   const empty_letter = document.getElementById('0');
+    //   empty_letter.innerHTML = selected_letter;
+    // }
+    let count = 0;
+    function clickOnevery() {
+      for (let i = 0; i < shuffled.length; i ++) {
+        const empty_letter = document.getElementsByClassName('empty_letter');
+        // ckick ant langeliu su raidemis
+         document.getElementById('b' + i).addEventListener('click', function () {
+           if (empty_letter[count].innerHTML === '') {
+              empty_letter[count].innerHTML = this.innerHTML;
+             let isCorect = '';
+             isCorect += empty_letter[count].innerHTML;
+             console.log(isCorect);
+              this.innerHTML = '';
+           }
+              count += 1;
+           if (count >= shuffled.length) {
+             count = 0;
+           }
+           console.log(count); });
+           // click ant kryziazodyje irasytu raidziu
+          empty_letter[i].addEventListener('click', function () {
+            if (document.getElementById('b' + i).innerHTML === '') {
+              document.getElementById('b' + i).innerHTML = this.innerHTML;
+              this.innerHTML = '';
+            }
+        });
+      }
     }
+    clickOnevery();
   }
 
 }
