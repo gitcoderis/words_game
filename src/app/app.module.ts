@@ -16,6 +16,11 @@ import { IntroComponent } from './intro/intro.component';
 import { RandomizeWordsService } from './randomize-words.service';
 import { TestComponent } from './test/test.component';
 
+// Marius: added firebase:
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +38,8 @@ import { TestComponent } from './test/test.component';
     MatCheckboxModule,
     MatCardModule,
     FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [RandomizeWordsService],
   bootstrap: [AppComponent]

@@ -1,3 +1,15 @@
 <p>
   test works!
 </p>
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.word}}
+  </li>
+</ul>
+
+
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.image}}
+  </li>
+</ul>
