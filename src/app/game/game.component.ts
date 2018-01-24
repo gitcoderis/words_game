@@ -69,29 +69,40 @@ export class GameComponent implements OnInit {
     //   const empty_letter = document.getElementById('0');
     //   empty_letter.innerHTML = selected_letter;
     // }
-    let count = 0;
+    const testing = this.randomWords;
     function clickOnevery() {
       for (let i = 0; i < shuffled.length; i ++) {
         const empty_letter = document.getElementsByClassName('empty_letter');
+        let isCorect = '';
         // ckick ant langeliu su raidemis
          document.getElementById('b' + i).addEventListener('click', function () {
-           if (empty_letter[count].innerHTML === '') {
-              empty_letter[count].innerHTML = this.innerHTML;
-             let isCorect = '';
-             isCorect += empty_letter[count].innerHTML;
-             console.log(isCorect);
+           for (let k = 0; k < shuffled.length; k++) {
+             if (empty_letter[k].innerHTML === '') {
+              empty_letter[k].innerHTML = this.innerHTML;
               this.innerHTML = '';
+            }
+              isCorect += empty_letter[k].innerHTML;
+               console.log(isCorect);
+            //  console.log(isCorect + ' foras');
            }
-              count += 1;
-           if (count >= shuffled.length) {
-             count = 0;
+           // tikrina ar teisingas zodis, bet suveikia tik viena karta
+           if (isCorect.length === shuffled.length) {
+             if (isCorect === testing) {
+               alert('Teisingai');
+             } else {
+               alert('neteisingai!');
+               isCorect = '';
+             }
+             console.log(isCorect + ' ifas ilgiui tikrint');
            }
-           console.log(count); });
+         });
            // click ant kryziazodyje irasytu raidziu
           empty_letter[i].addEventListener('click', function () {
-            if (document.getElementById('b' + i).innerHTML === '') {
-              document.getElementById('b' + i).innerHTML = this.innerHTML;
-              this.innerHTML = '';
+            for (let n = 0; n < shuffled.length; n++) {
+                if (document.getElementById('b' + n).innerHTML === '') {
+                  document.getElementById('b' + n).innerHTML = this.innerHTML;
+                  this.innerHTML = '';
+                }
             }
         });
       }
