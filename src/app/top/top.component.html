@@ -1,0 +1,8 @@
+<div class="list">
+  <ul>
+    <li *ngFor="let player of players | async">
+      {{ player.user }}
+      {{ player.score }}
+    </li>
+  </ul>
+</div>

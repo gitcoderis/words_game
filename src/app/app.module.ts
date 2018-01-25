@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { routing } from './app.routing';
 
+import {HttpModule, Http } from '@angular/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatCardModule } from '@angular/material';
 import 'hammerjs';
@@ -15,6 +17,9 @@ import { IntroComponent } from './intro/intro.component';
 
 import { RandomizeWordsService } from './randomize-words.service';
 import { TestComponent } from './test/test.component';
+import { TopComponent } from './top/top.component';
+// Indrė
+import { PlayerService } from './top/shared/player.service';
 
 // Marius: added firebase:
 import { AngularFireModule } from 'angularfire2';
@@ -27,7 +32,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     AppComponent,
     GameComponent,
     IntroComponent,
-    TestComponent
+    TestComponent,
+    TopComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +45,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     MatCardModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpModule
   ],
-  providers: [RandomizeWordsService],
+  providers: [RandomizeWordsService, Http, PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
