@@ -10,17 +10,24 @@ import { RandomizeWordsService } from '../randomize-words.service';
 })
 export class GameComponent implements OnInit {
   randomWords: any; // laiko random zodzio reiksme
+  randomLetters: any; // masyvas random raidems
+  wordsDb: any;
   constructor(
     private _random: RandomizeWordsService,
     private elRef: ElementRef) { }
 
   ngOnInit() {
 
+    // ---------------------------------------------------------
+    // this.wordsDb = this._random.getAll();
+    // console.log(this.wordsDb);
+    // ----------------------------------------------------------
     // Marius: gauna viena random zodi:
     this.randomWords = this._random.getOneRandomWord().word;
     console.log(this.randomWords);
-
-    // Elena: pradedu rasyti funkcija kryziazodziui atvaizduoti
+    // priskiriu kintamajam random_word
+    const random_word = this.randomWords;
+    // Elena: funkcija tusciam kryziazodziui atvaizduoti
     const container = this.elRef.nativeElement.querySelector('#crossword-grid'); // randa div, kuriame kursiu langelius
     function makeCrossword(x) {
       for (let i = 0; i < x; i++) {
@@ -33,7 +40,7 @@ export class GameComponent implements OnInit {
         container.appendChild(letter); // langelius ideda i pagrindini div'a
       }
     }
-    // Elena: pradedu rasyti funkcija raidziu langeliams atvaizduoti
+    // Elena: funkcija raidziu langeliams atvaizduoti
     const contLetter = this.elRef.nativeElement.querySelector('#randomLetters');
     function makeLetterBoxes(x) {
       for (let i = 0; i < x.length; i++) {
@@ -45,12 +52,10 @@ export class GameComponent implements OnInit {
         box.style.width = '50px';
         box.style.height = '50px';
         box.style.display = 'inline-block';
+        box.style.textAlign = 'center';
       }
     }
-    const shuffled = shuffle(this.randomWords); // kintamajam priskiriu gauta zodi ismaisytomis raidemis
-    makeCrossword(this.randomWords.length);
-    makeLetterBoxes(shuffled);
-// ismaiso zodzio raides
+// funkcija, kuri ismaiso zodzio raides
     function shuffle(word: any) {
       const word_split = word.split('');
       const n = word_split.length;
@@ -63,51 +68,65 @@ export class GameComponent implements OnInit {
       }
       return word_split.join('');
     }
-    // funkcija raidems irasyti i tuscius langelius
-    // function selectLetter(id) {
-    //   const selected_letter = document.getElementById(id).innerHTML;
-    //   const empty_letter = document.getElementById('0');
-    //   empty_letter.innerHTML = selected_letter;
-    // }
-    const testing = this.randomWords;
-    function clickOnevery() {
+// funkcija paspausti ant pasirinktos raides, kad ja irasytu i kryziazodi
+    function selectLetter() {
       for (let i = 0; i < shuffled.length; i ++) {
         const empty_letter = document.getElementsByClassName('empty_letter');
         let isCorect = '';
         // ckick ant langeliu su raidemis
          document.getElementById('b' + i).addEventListener('click', function () {
-           for (let k = 0; k < shuffled.length; k++) {
+           for (let k = 0; k < random_word.length; k++) {
              if (empty_letter[k].innerHTML === '') {
               empty_letter[k].innerHTML = this.innerHTML;
               this.innerHTML = '';
             }
-              isCorect += empty_letter[k].innerHTML;
-               console.log(isCorect);
-            //  console.log(isCorect + ' foras');
-           }
-           // tikrina ar teisingas zodis, bet suveikia tik viena karta
-           if (isCorect.length === shuffled.length) {
-             if (isCorect === testing) {
-               alert('Teisingai');
-             } else {
-               alert('neteisingai!');
-               isCorect = '';
+             if (empty_letter[k].innerHTML === random_word[k]) {
+               isCorect += empty_letter[k].innerHTML;
+              //  console.log(isCorect);
              }
-             console.log(isCorect + ' ifas ilgiui tikrint');
+           }
+           // tikrina ar teisingas zodis
+           if (isCorect.indexOf(random_word) !== -1) {
+             alert('Teisingai');
            }
          });
-           // click ant kryziazodyje irasytu raidziu
-          empty_letter[i].addEventListener('click', function () {
-            for (let n = 0; n < shuffled.length; n++) {
-                if (document.getElementById('b' + n).innerHTML === '') {
-                  document.getElementById('b' + n).innerHTML = this.innerHTML;
-                  this.innerHTML = '';
-                }
-            }
-        });
       }
     }
-    clickOnevery();
+    // funkcija paspausti ant pasirinktos raides kryziazodyje, kad isvalytu kryziazodzio langeli
+    function clearLetter() {
+      // click ant kryziazodyje irasytu raidziu
+      for (let i = 0; i < random_word.length; i++) {
+      const empty_letter = document.getElementsByClassName('empty_letter');
+      empty_letter[i].addEventListener('click', function () {
+        for (let n = 0; n < shuffled.length; n++) {
+          if (document.getElementById('b' + n).innerHTML === '') {
+            document.getElementById('b' + n).innerHTML = this.innerHTML;
+            this.innerHTML = '';
+          }
+        }
+      });
+    }
+    }
+    const randomLetters = ['a', 'b', 'c', 'd']; // bandomasis raidziu masyvas
+    let threeLetters = '';
+    // funkcija gauna tris random raides is raidziu masyvo
+    function getThreeRandomLetters() {
+      let oneLetter;
+      for (let i = 0; i < 3; i++) {
+        oneLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+        threeLetters += oneLetter;
+      }
+      console.log(threeLetters);
+      return threeLetters;
+    }
+    getThreeRandomLetters();
+    const word_letters = random_word + threeLetters;
+    const shuffled = shuffle(word_letters); // kintamajam priskiriu gauta zodi ismaisytomis raidemis
+    console.log(shuffled);
+    makeCrossword(random_word.length); // nupiesia tuscia kryziazodi
+    makeLetterBoxes(shuffled); // nupiesia raides apacioje
+    selectLetter();
+    clearLetter();
   }
 
 }

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import * as data from '../assets/js/words.json';
 
 //firebase:
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -17,12 +17,36 @@ export class RandomizeWordsService {
  randomWords: any = []; //galutinis masyvas, kuriame laikomi 4 random žodžiai
 
   items: any; //laiko firebase duomenis
+  words_db: AngularFireList<any>;
   constructor(private db: AngularFireDatabase) {
     this.items = db.list('words');
+    this.words_db = db.list('words');
    }
 
+
+   // ---------------------------------------------------------------------------------
+   // Elena: bandau gauti duomenis is firedatabase
+  // getAll() {
+  //   return this.words_db.snapshotChanges().map(
+  //     changes => {
+  //       return changes.map(
+  //         mainChanges => ({
+  //           key: mainChanges.payload.key,
+  //           ...mainChanges.payload.val()
+  //         })
+  //       );
+  //     }
+  //   );
+  // }
+  // getOneTodo(key: any) {
+  //   const wordsDb = `/words/${key}`;
+  //   return this.db.object(wordsDb).snapshotChanges();
+  // }
+// ---------------------------------------------------------------------------------------
+
+
   getOneRandomWord() {
-    let oneRandomWord = this.word[Math.floor(Math.random() * this.word.length) + 1];
+    let oneRandomWord = this.word[Math.floor(Math.random() * this.word.length)];
     return oneRandomWord;
 
   }
@@ -30,7 +54,7 @@ export class RandomizeWordsService {
   //gauna random zodi ir tikrina ji
   getRandomWords() {
   //  this.randWord = this.items[Math.floor(Math.random() * this.items.length) + 1];
-   this.randWord = this.word[Math.floor(Math.random() * this.word.length) + 1];
+   this.randWord = this.word[Math.floor(Math.random() * this.word.length)];
     this.checkWords(this.randWord);
   }
 
