@@ -47,5 +47,10 @@
     </div>
   </div>
 </div> -->
+<ul>
+  <li *ngFor="let word of wordsDb | async">
+    {{word.word}}
+  </li>
+</ul>
   <div id="randomLetters"></div>
 </div>

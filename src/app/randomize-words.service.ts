@@ -26,22 +26,22 @@ export class RandomizeWordsService {
 
    // ---------------------------------------------------------------------------------
    // Elena: bandau gauti duomenis is firedatabase
-  // getAll() {
-  //   return this.words_db.snapshotChanges().map(
-  //     changes => {
-  //       return changes.map(
-  //         mainChanges => ({
-  //           key: mainChanges.payload.key,
-  //           ...mainChanges.payload.val()
-  //         })
-  //       );
-  //     }
-  //   );
-  // }
-  // getOneTodo(key: any) {
-  //   const wordsDb = `/words/${key}`;
-  //   return this.db.object(wordsDb).snapshotChanges();
-  // }
+  getAll() {
+    return this.words_db.snapshotChanges().map(
+      changes => {
+        return changes.map(
+          mainChanges => ({
+            key: mainChanges.payload.key,
+            ...mainChanges.payload.val()
+          })
+        );
+      }
+    );
+  }
+  getOneTodo(key: any) {
+    const wordsDb = `/words/${key}`;
+    return this.db.object(wordsDb).snapshotChanges();
+  }
 // ---------------------------------------------------------------------------------------
 
 

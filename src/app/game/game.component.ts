@@ -19,8 +19,15 @@ export class GameComponent implements OnInit {
   ngOnInit() {
 
     // ---------------------------------------------------------
-    // this.wordsDb = this._random.getAll();
-    // console.log(this.wordsDb);
+    this.wordsDb = this._random.getAll();
+    console.log(this.wordsDb);
+    const wordTest = this.wordsDb;
+    function test() {
+      for (let i = 0; i < wordTest.length; i++) {
+        console.log(wordTest[i]);
+      }
+    }
+    test();
     // ----------------------------------------------------------
     // Marius: gauna viena random zodi:
     this.randomWords = this._random.getOneRandomWord().word;
